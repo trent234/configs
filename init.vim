@@ -66,5 +66,6 @@ Plug 'sebdah/vim-delve'
 Plug 'benmills/vimux'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
