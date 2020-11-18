@@ -25,6 +25,12 @@ set splitright
 "auto init on start
 autocmd vimenter * NERDTree
 
+"now switch focus back to the original file and not nerdtree
+autocmd VimEnter * wincmd p
+
+"autoclose when its the last buffer open (after a close of another buffer)
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 """"""""""""""""""" vim-go related settings """"""""""""""""""""""""""""""""""""
 
 " enables use of missing vim-go commands. this is auto on with vim-plug
@@ -59,5 +65,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'sebdah/vim-delve'
 Plug 'benmills/vimux'
 Plug 'preservim/nerdtree'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
