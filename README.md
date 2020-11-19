@@ -3,13 +3,15 @@ config hub useful for getting personalization asap on new systems
 
 # neovim 
 ### prereqs (additional software that plugins support)
-####git  
+**git**  
 you probably want to get it from your package manager  
 https://github.com/git/git  
-####go  
+**go**  
 https://github.com/golang/go  
-####delve  
+**delve**  
+```
 go get github.com/go-delve/delve/cmd/dlv  
+```
 https://github.com/go-delve/delve  
 
 ### install:
@@ -46,11 +48,11 @@ ctrl+w plus directional letter to move between windows
 :pc 		closes the preview window (this used to be auto but i didn't like that)  
 		This is the window that pops up when you hover over code a
 		completion recommendation.
-#### docs and full command list
+**docs and full command list**  
 https://github.com/fatih/vim-go/blob/master/doc/vim-go.txt
 
 ### delve(go debugger) usage notes cheatsheet
-#### docs and full command list
+**docs and full command list**  
 https://github.com/sebdah/vim-delve
 
 ### fugitive usage notes
