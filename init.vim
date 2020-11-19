@@ -56,6 +56,7 @@ set backspace=indent,eol,start
 " autocmd CompleteDone * pclose
 
 """"""""""""""""""""" vim-delve """""""""""""""""""""""""""""""""""""""""""""
+"used to create a new (horiz) window to run the terminal in.
 let g:delve_new_command = "new"
 
 """"""""""""""""""""" vim-plug """""""""""""""""""""""""""""""""""""""""""""""
