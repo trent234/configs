@@ -44,10 +44,10 @@ ctrl+w plus directional letter to move between windows
 ### vim-go usage notes  
 :cc # 		where # is the number of the error in the quickfix window  
 :cclose 	closes the quickfix window  
-:GoDoc 		goes to documentation close with :q!
+:GoDoc 		goes to documentation close with :q!  
 :pc 		closes the preview window (this used to be auto but i didn't like that)  
-		This is the window that pops up when you hover over code a
-		completion recommendation.
+		This is the window that pops up when you hover over code a  
+		completion recommendation.  
 **docs and full command list**  
 https://github.com/fatih/vim-go/blob/master/doc/vim-go.txt
 
