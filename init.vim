@@ -10,7 +10,8 @@
 set number
 
 " reminder not to go to far down the line
-set colorcolumn=80
+set colorcolumn=80 
+highlight ColorColumn ctermbg=6
 
 " underline on current line
 set cursorline
@@ -59,6 +60,10 @@ set backspace=indent,eol,start
 "used to create a new (horiz) window to run the terminal in.
 let g:delve_new_command = "new"
 
+""""""""""""""""""""" vim-solarized-themes """""""""""""""""""""""""""""""""""""
+let g:airline_solarized_bg='dark'
+let g:airline_theme='solarized'
+
 """"""""""""""""""""" vim-plug """""""""""""""""""""""""""""""""""""""""""""""
 
 call plug#begin('~/.vim/plugged')
@@ -68,5 +73,6 @@ Plug 'benmills/vimux'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
