@@ -26,6 +26,9 @@ set splitright
 "auto init on start
 autocmd vimenter * NERDTree
 
+" width set
+let g:NERDTreeWinSize=24
+
 "now switch focus back to the original file and not nerdtree
 autocmd VimEnter * wincmd p
 

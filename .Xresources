@@ -2,9 +2,10 @@
 !https://gist.github.com/liangzan/1643690
 
 ! 96dpi is 100% so 144 is 150%
-Xft.dpi: 144
+Xft.dpi: 168
 
-URxvt.font: xft:DejaVu Sans Mono:size=10:antialias=true
+URxvt.font: xft:DejaVu Sans Mono:size=12:antialias=true
+!URxvt.font: xft:SourceCodePro-medium:size=10:antialias=true
 
 URxvt*buffered: true
 URxvt*cursorBlink: true
@@ -58,7 +59,7 @@ URxvt.matcher.button: 1
 #define S_blue          #268bd2
 #define S_cyan          #2aa198
 #define S_green         #859900
-
+ 
 *background:            S_base03
 *foreground:            S_base00
 *cursorColor:           S_base1
