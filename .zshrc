@@ -1,0 +1,63 @@
+# trent wilson
+# prereqs:
+# install zsh, chsh, oh my zsh, fzf needed for zsh-interactive-cd
+# install custom plugins
+# 	- fast-syntax-highlighting
+# 	- zsh-autosuggestions
+
+# Path to your oh-my-zsh installation.
+export ZSH="/home/trent/.oh-my-zsh"
+
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(	git 
+		vi-mode
+		zsh-interactive-cd
+		fast-syntax-highlighting
+		zsh-autosuggestions
+	)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+# some inspo from 
+# https://callstack.com/blog/supercharge-your-terminal-with-zsh/
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=100000
+SAVEHIST=$HISTSIZE
+setopt hist_ignore_all_dups # remove older duplicate entries from history
+setopt hist_reduce_blanks # remove superfluous blanks from history items
+setopt inc_append_history # save history entries as soon as they are entered
+setopt share_history # share history between different instances of the shell
+
+setopt correct_all # autocorrect commands
+setopt auto_list # automatically list choices on ambiguous completion
+setopt auto_menu # automatically use menu completion
+setopt always_to_end # move cursor to end if word had one match
+
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export EDITOR='nvim'
+
+alias vi="nvim"
+
+# color on, hostname , pwd, color off, if sudo # else $
+PS1='%F{blue}%m %1/%f%(!.#.$) '
+
+# vi-mode settings
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+MODE_INDICATOR="%F{magenta}[NORMAL]%f"
+
+# zsh-autosuggestions settings
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=3"
+
+# autocompletion 
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
+zstyle ':completion:*' use-compctl false
+zstyle :compinstall filename '/home/trent/.zshrc'
+autoload -Uz compinit
+compinit
