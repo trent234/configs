@@ -12,7 +12,7 @@ export ZSH="/home/trent/.oh-my-zsh"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(	git 
+plugins=(	 
 		vi-mode
 		zsh-interactive-cd
 		fast-syntax-highlighting
@@ -52,6 +52,21 @@ MODE_INDICATOR="%F{magenta}[NORMAL]%f"
 
 # zsh-autosuggestions settings
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=3"
+
+# arrow scroll through suggestions per
+# https://github.com/zsh-users/zsh-autosuggestions/issues/303
+# it doesn't work exactly like i want. will auto accept and go to eol. (fyi)
+if [[ "${terminfo[kcuu1]}" != "" ]]; then
+autoload -U up-line-or-beginning-search
+zle -N up-line-or-beginning-search
+bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
+fi
+
+if [[ "${terminfo[kcud1]}" != "" ]]; then
+autoload -U down-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
+fi
 
 # autocompletion 
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
