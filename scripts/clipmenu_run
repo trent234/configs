@@ -1,0 +1,8 @@
+#!/bin/sh
+#trent wilson
+#wrapper for clipmenu, needed bc dwm wont accept 
+#setting the env variable in its config.
+#corequisites: clipmenu & dwm
+#default loc: /usr/local/bin/clipmenu_run
+
+CM_DIR=~/.cache clipmenu $@

@@ -1,5 +1,9 @@
 " trent wilson
 " neovim config
+" corequisites:
+" 	-vim-plug to get plugins working
+" 	-go for go related plugings to work
+" 	-to do: copy/paste into clipboard and set up language server
 
 """""""""""""""""""""""""" global vim settings """""""""""""""""""""""""""""""
 
@@ -27,7 +31,7 @@ set splitright
 autocmd vimenter * NERDTree
 
 " width set
-let g:NERDTreeWinSize=24
+let g:NERDTreeWinSize=20
 
 "now switch focus back to the original file and not nerdtree
 autocmd VimEnter * wincmd p

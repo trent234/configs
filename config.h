@@ -1,4 +1,10 @@
-/* See LICENSE file for copyright and license details. */
+/* trent wilson
+ * config for dwm with basic i3 like keybindings and whats intuitive to me
+ * corequisite: clipmenu is a shortcut. install clipmenu before using that.
+ * clipmenu wrapper script required. see clipmenu_run
+ * default location: /opt/dwm-6.2/config.h and run <<make clean install>>
+ * See LICENSE file for copyright and license details. 
+ */
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -11,7 +17,7 @@ static const char col_gray1[]       = "#002b36";
 static const char col_gray2[]       = "#073642";
 static const char col_gray3[]       = "#586e75";
 static const char col_gray4[]       = "#eee8d5";
-static const char col_violet[]        = "#6c71c4";
+static const char col_violet[]      = "#6c71c4";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -57,6 +63,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_violet, "-sf", col_gray4, NULL };
+static const char *clipmenucmd[] = { "clipmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_violet, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
 
 static Key keys[] = {
@@ -64,6 +71,8 @@ static Key keys[] = {
 	/********************************************************************/
 	/* launch dmenu */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
+	/* launch clipmenu */
+	{ MODKEY|ShiftMask,             XK_space,  spawn,          {.v = clipmenucmd } },
 	/* launch terminal */
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	/* show or hide the top bar */
@@ -93,12 +102,13 @@ static Key keys[] = {
 	/* quit dwm  */
 	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
 
+	/* I don't use these ... yet */
 	{ MODKEY,                       XK_z,      setlayout,      {0} }, 
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+      /*{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },*/
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
