@@ -4,6 +4,7 @@
 # install custom plugins
 # 	- fast-syntax-highlighting
 # 	- zsh-autosuggestions
+# go needed for go envs to be useful
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/trent/.oh-my-zsh"
@@ -37,13 +38,18 @@ setopt auto_list # automatically list choices on ambiguous completion
 setopt auto_menu # automatically use menu completion
 setopt always_to_end # move cursor to end if word had one match
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export EDITOR='nvim'
+# prompt. color on, hostname , pwd, color off, if sudo # else $
+PS1='%F{blue}%m %1/%f%(!.#.$) '
+
+# go env variables
+GOPATH=$HOME/go
+GOBIN=$GOPATH/bin
+
+# generic env variables
+PATH=$GOBIN:$HOME/bin:/usr/local/bin:$PATH
+EDITOR='nvim'
 
 alias vi="nvim"
-
-# color on, hostname , pwd, color off, if sudo # else $
-PS1='%F{blue}%m %1/%f%(!.#.$) '
 
 # vi-mode settings
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
