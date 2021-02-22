@@ -1,9 +1,4 @@
-# configs
-config hub useful for getting personalization asap on new systems
-note: still deciding whether to list prereqs here or at top of each file.   
-for now its a combo. big picture stuff here, smaller in each file.  
-
-## neovim 
+## extended neovim notes on install, usage, and anything really.
 for arch linux, install neovim from pacman.    
 
 ### make symlink from this repo dir to where the config needs to go so all configs can remain in one spot for easy edits and updates 
@@ -20,7 +15,7 @@ curl -fLo /home/${USER}/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 Reload init.vim and :PlugInstall to install plugins that are in init.vim  
 
 ### language client/servers
-servers- currently have json, go, c, and bash setup.  
+servers- currently have json, go, c, and bash setup. c needs tlc.  
 the client is coc which is in init.vim.  
 
 servers needed for each language. json is installed at first opening of CocConfig.  
@@ -31,7 +26,7 @@ https://octetz.com/docs/2020/2020-01-06-vim-k8s-yaml-support/
 go is gopls and installed via yarn / installed when vim-go in installed
 see here for details on that:
 https://octetz.com/docs/2019/2019-04-24-vim-as-a-go-ide/  
-the c server is still WIP . npm? rein in all the package managers?  
+the c server is still WIP . npm? rein in all the package managers? no.   
 see here for a good place to start to add new lang servers:  
 https://github.com/neoclide/coc.nvim/wiki/Language-servers#bash
 
@@ -66,6 +61,10 @@ https://github.com/sebdah/vim-delve
 
 ### fugitive usage notes
 :Git + git command
+
+### to use the markdown plugin
+:MarkdownPreview  
+the file must have the .md file extension  
 
 ### other sources & inspiration
 most everything has probably changed since i read this article.  

@@ -1,8 +1,5 @@
 /* trent wilson
- * config for dwm with basic i3 like keybindings and whats intuitive to me
- * corequisite: clipmenu is a shortcut. install clipmenu before using that.
- * clipmenu wrapper script required. see clipmenu_run
- * default location: /opt/dwm-6.2/config.h and run <<make clean install>>
+ * config for dwm 
  * See LICENSE file for copyright and license details. 
  */
 
