@@ -1,5 +1,5 @@
-# configs
-config hub useful for getting personalization asap on new systems   
+# configs/scripts
+config hub useful for getting personalization & workflow asap on new systems   
 
 ### list of configs and purpose
 xorg -> the x11 server configuration needed to start my wm of choice and statusbar and theme it  
