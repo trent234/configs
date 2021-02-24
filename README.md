@@ -8,6 +8,7 @@ dwmstatus -> my window manager status bar
 zsh -> my shell  
 nvim -> my text editor  
 clipmenu -> configs to converge clipboards throughout the system and make it usable and convenient.  
+scrot -> little wrapper script calling scrot (short for SCReenshOT) and placing it in the appropriate dir.  
 
 ### screenshot
 it doesn't show about 95% of the functionality that these configs/scripts allow  
