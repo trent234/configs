@@ -8,8 +8,9 @@ static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=12" };
-static const char dmenufont[]       = "monospace:size=12";
+static const char *fonts[]          = { "DejaVu Sans Mono:size=12",
+					"Noto Color Emoji:size=10" };
+static const char dmenufont[]       = "DejaVu Sans Mono:size=12";
 static const char col_gray1[]       = "#002b36";
 static const char col_gray2[]       = "#073642";
 static const char col_gray3[]       = "#586e75";
@@ -61,7 +62,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_violet, "-sf", col_gray4, NULL };
 static const char *clipmenucmd[] = { "clipmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_violet, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "urxvt", NULL };
+static const char *termcmd[]  = { "termite", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
