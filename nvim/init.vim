@@ -160,6 +160,8 @@ let g:go_def_mapping_enabled = 0
 
 " ******************* markdown preview copied from *************************
 " https://github.com/iamcco/markdown-preview.nvim
+" :MarkdownPreview
+" :MarkdownPreviewStop
 
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0

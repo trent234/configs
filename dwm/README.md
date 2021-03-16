@@ -21,6 +21,7 @@ COREQUISITE:
 	need to delete some code out of drw.c see link below for more info.
 	if the bug still exists, you will need a downstream libxft-bgra from the
 	AUR. yes lots of hassle for my fancy google noto weather icons...
+	https://www.youtube.com/watch?v=0QkByBugq_4
 
 DEFAULT INSTALL LOCATION:  
 /opt/dwm-6.2/config.h   
