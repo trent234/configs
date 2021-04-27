@@ -8,11 +8,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'sebdah/vim-delve'
-Plug 'benmills/vimux'                                       
-Plug 'preservim/nerdtree'                                           
+Plug 'benmills/vimux'
+Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-Plug 'vim-airline/vim-airline'                    
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
@@ -25,7 +25,7 @@ call plug#end()
 set number
 
 " reminder not to go to far down the line. and set nice solar color.
-set colorcolumn=80 
+set colorcolumn=80
 highlight ColorColumn ctermbg=6
 
 " underline on current line
@@ -41,6 +41,15 @@ let g:go_def_mapping_enabled = 0
 
 " connect vi and sys clipboards
 set clipboard=unnamedplus
+
+" delete trailing whitespace on save except for specified filetypes
+" not working yet...
+" let blacklist = ['md', 'markdown']
+" autocmd BufWritePre * if index(blacklist, &ft) < 0 | %s/\s\+$//e
+
+" change dropdown menu gb color bc default gray was unreadable in remote desktop
+" deprecated... delete?
+" highlight Pmenu ctermbg=green guibg=green
 
 """"""""""""""""""" nerdtree"""""""""""""""""""""""""""""""""""""""""""""""""
 "auto init on start
@@ -70,10 +79,8 @@ set autowrite
 " auto do autocomplete dropdown
 "au filetype go inoremap <buffer> . .<C-x><C-o>
 
-" change dropdown menu gb color bc default gray was unreadable in remote desktop
-highlight Pmenu ctermbg=green guibg=green
 
-" idk yet but its in the tut and my backspace has gone wonky and this fixed it 
+" idk yet but its in the tut and my backspace has gone wonky and this fixed it
 "set backspace=indent,eol,start
 
 " disable vim-go :GoDef short cut (gd)
@@ -85,11 +92,11 @@ highlight Pmenu ctermbg=green guibg=green
 let g:delve_new_command = "new"
 
 """"""""""""""""""""" vim-solarized-themes """""""""""""""""""""""""""""""""""""
-let g:airline_solarized_bg='dark'
-let g:airline_theme='solarized'
+" let g:airline_solarized_bg='dark'
+" let g:airline_theme='solarized'
 
-"""""""""""""""""" coc.nvim default settings """""""""""""""""""""""""""""""""
-" copied from github page no doubt
+"""""""""""""""""" coc.nvim settings """""""""""""""""""""""""""""""""
+" just about all copied from github page no doubt
 
 " if hidden is not set, TextEdit might fail.
 set hidden
@@ -130,6 +137,8 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Use U to show documentation in preview window
 nnoremap <silent> U :call <SID>show_documentation()<CR>
+" tsw 20210427 gh for hover and show docs. above doesn't work for pyright?
+nnoremap gh :call CocActionAsync('doHover')<CR>
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -160,6 +169,7 @@ let g:go_def_mapping_enabled = 0
 
 " ******************* markdown preview copied from *************************
 " https://github.com/iamcco/markdown-preview.nvim
+" Usage-
 " :MarkdownPreview
 " :MarkdownPreviewStop
 
