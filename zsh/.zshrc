@@ -5,6 +5,7 @@
 # 	- fast-syntax-highlighting
 # 	- zsh-autosuggestions
 # go needed for go envs to be useful
+# pyenv line below requires pyenv
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/trent/.oh-my-zsh"
@@ -50,6 +51,9 @@ PATH=$GOBIN:$HOME/bin:/usr/local/bin:$PATH
 EDITOR='nvim'
 
 alias vi="nvim"
+
+# for pyenv aka pick your python version
+eval "$(pyenv init -)"
 
 # vi-mode settings
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
