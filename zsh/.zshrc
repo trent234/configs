@@ -4,6 +4,7 @@
 # install custom plugins
 # 	- fast-syntax-highlighting
 # 	- zsh-autosuggestions
+# 	- vi/git addon see below
 # go needed for go envs to be useful
 # pyenv line below requires pyenv
 
@@ -15,15 +16,23 @@ export ZSH="/home/trent/.oh-my-zsh"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(	 
-		vi-mode
+#		vi-mode
 		zsh-interactive-cd
 		fast-syntax-highlighting
 		zsh-autosuggestions
-		git-prompt
+#		git-prompt
 		gitfast
 	)
 
+# is ohmyzsh pointless if i'm getting most my plugins from gh anyway? refactor
 source $ZSH/oh-my-zsh.sh
+# sets prompt has nice git functionality and vi mode indicator lumped in
+# https://github.com/woefe/git-prompt.zsh 
+# and wget https://raw.githubusercontent.com/woefe/vi-mode.zsh/master/vi-mode.zsh
+# ..beautiful..
+source ~/.zsh/git-prompt.zsh/vi-mode.zsh
+source ~/.zsh/git-prompt.zsh/git-prompt.zsh
+source ~/.zsh/git-prompt.zsh/examples/wprompt.zsh
 
 # User configuration
 # some inspo from 
@@ -42,7 +51,8 @@ setopt auto_menu # automatically use menu completion
 setopt always_to_end # move cursor to end if word had one match
 
 # prompt. color on, hostname , pwd, color off, if sudo # else $
-PS1='%F{blue}%m %1/%f%(!.#.$) '
+# disabled to make way for git prompt
+#PS1='%F{blue}%m %1/%f%(!.#.$) '
 
 # go env variables
 GOPATH=$HOME/go
@@ -58,9 +68,10 @@ alias vi="nvim"
 eval "$(pyenv init -)"
 
 # vi-mode settings
-VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-VI_MODE_SET_CURSOR=true
-MODE_INDICATOR="%F{magenta}[NORMAL]%f"
+# superseeded by woefe git prompt above
+#VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+#VI_MODE_SET_CURSOR=true
+#MODE_INDICATOR="%F{magenta}[NORMAL]%f"
 
 # zsh-autosuggestions settings
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=3"
