@@ -19,6 +19,8 @@ plugins=(
 		zsh-interactive-cd
 		fast-syntax-highlighting
 		zsh-autosuggestions
+		git-prompt
+		gitfast
 	)
 
 source $ZSH/oh-my-zsh.sh
@@ -32,7 +34,7 @@ SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups # remove older duplicate entries from history
 setopt hist_reduce_blanks # remove superfluous blanks from history items
 setopt inc_append_history # save history entries as soon as they are entered
-setopt share_history # share history between different instances of the shell
+#setopt share_history # share history between different instances of the shell
 
 setopt correct_all # autocorrect commands
 setopt auto_list # automatically list choices on ambiguous completion
