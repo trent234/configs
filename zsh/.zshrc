@@ -99,3 +99,7 @@ zstyle ':completion:*' use-compctl false
 zstyle :compinstall filename '/home/trent/.zshrc'
 autoload -Uz compinit
 compinit
+
+# autocompletion for terraform
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
