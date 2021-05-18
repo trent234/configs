@@ -20,6 +20,12 @@
 			"timer": "0"
 		},
 		{
+			"prefix": "🖥 ",
+			"updateSignal": "41",
+			"command": "xss_monitor.sh",
+			"timer": "10s"
+		},
+		{
 			"prefix": "📏 ",
 			"updateSignal": "37",
 			"command": "#Memory",
@@ -28,7 +34,7 @@
 			"timer": "2s"
 		},
 		{
-			"prefix": "🖥  ",
+			"prefix": "🧮 ",
 			"updateSignal": "38",
 			"command": "#Cpu",
 			"suffix": "%",

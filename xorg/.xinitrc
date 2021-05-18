@@ -1,6 +1,6 @@
 #!/bin/sh
 #trent wilson
-#corequisites: dwm and goblocks
+#corequisites: dwm, xsstate, slock, and goblocks
 #goblocks requires go to build
 
 userresources=$HOME/.Xresources
@@ -20,7 +20,6 @@ fi
 
 if [ -f "$userresources" ]; then
     xrdb -merge "$userresources"
-
 fi
 
 if [ -f "$usermodmap" ]; then
@@ -36,8 +35,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# goblocks statusbar
+# statusbar
 exec goblocks 2>&1 >/dev/null &
 
-# dwm window manager
+# screen saver/lock
+exec xsidle.sh slock &
+
+# window manager
 exec dwm
