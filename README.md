@@ -10,7 +10,6 @@ nvim -> my text editor
 clipmenu -> configs to converge clipboards throughout the system and make it usable and convenient.  
 (TODO: fix clipmenu bugs. needs occasional restarts).    
 scrot -> little wrapper script calling scrot (short for SCReenshOT) and placing it in the appropriate dir.  
-
 ### screenshot
 it doesn't show about 95% of the functionality that these configs/scripts allow  
 but here is what the the typical window looks like.  
