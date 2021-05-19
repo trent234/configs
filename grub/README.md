@@ -14,7 +14,7 @@ INSTALL:
 * grub-install --target=x86_64-efi --efi-directory=/mnt/efi --bootloader-id=GRUB
 * ln -sf /opt/configs/grub/grub /etc/default/grub
 * grub-mkconfig -o /boot/grub/grub.cfg
-More instructions here:
+More instructions here:  
 https://wiki.archlinux.org/title/GRUB
 
 Install the solarized theme from here and use its install script:  
