@@ -17,7 +17,7 @@
 			"prefix": "🔊",
 			"updateSignal": "36",
 			"command": "amixer get Master | awk ' /%/ {print $5 $6}' | head -1 | sed -e 's/]//g' -e 's/\\[/ /g'",
-			"timer": "0"
+			"timer": "5s"
 		},
 		{
 			"prefix": "🖥 ",
@@ -38,8 +38,14 @@
 			"updateSignal": "38",
 			"command": "#Cpu",
 			"suffix": "%",
-			"format": "%.2f",		
+			"format": "%5.2f",		
 			"timer": "2s"
+		},
+		{
+			"prefix": "🔋 ",
+			"updateSignal": "42",
+			"command": "batt_monitor.sh",
+			"timer": "5s"
 		},
 		{
 			"prefix": "🗓 ",
