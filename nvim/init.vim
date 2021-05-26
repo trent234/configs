@@ -92,8 +92,7 @@ set autowrite
 let g:delve_new_command = "new"
 
 """"""""""""""""""""" vim-solarized-themes """""""""""""""""""""""""""""""""""""
-" let g:airline_solarized_bg='dark'
-" let g:airline_theme='solarized'
+let g:airline_theme='solarized_flood'
 
 """""""""""""""""" coc.nvim settings """""""""""""""""""""""""""""""""
 " just about all copied from github page no doubt
