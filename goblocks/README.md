@@ -1,7 +1,7 @@
 FILE:  
 goblocks.json  
-xss_monitor.sh
-batt_monitor.sh
+xss_monitor.sh  
+batt_monitor.sh  
 
 DESCRIPTION:  
 goblocks.json is the config file for the project hosted here:  
@@ -19,7 +19,7 @@ DEFAULT INSTALL LOCATION:
 INSTALL:  
 follow goblocks install instructions  
 ln -sf /opt/configs/goblocks.json /home/trent/.config/goblocks.json  
-sudo ln -sf /opt/configs/xss_monitor.sh /usr/local/bin/xss_monitor.sh
-sudo ln -sf /opt/configs/batt_monitor.sh /usr/local/bin/batt_monitor.sh
+sudo ln -sf /opt/configs/xss_monitor.sh /usr/local/bin/xss_monitor.sh  
+sudo ln -sf /opt/configs/batt_monitor.sh /usr/local/bin/batt_monitor.sh  
 .xinitrc has the necessary call to run goblocks at startup
 
