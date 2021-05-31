@@ -59,12 +59,13 @@ GOPATH=$HOME/go
 GOBIN=$GOPATH/bin
 
 # generic env variables
-PATH=$GOBIN:$HOME/bin:/usr/local/bin:$PATH
+PATH=$GOBIN:$HOME/bin:/usr/local/bin:$HOME/.pyenv/bin:$PATH
 EDITOR='nvim'
 
 alias vi="nvim"
 
 # for pyenv aka pick your python version
+eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
 # vi-mode settings
