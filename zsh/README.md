@@ -5,15 +5,13 @@ DESCRIPTION:
 zsh config file  
 
 COREQUISITE:  
-* install zsh, chsh, oh my zsh, fzf needed for zsh-interactive-cd (arch use pacman)  
-* install custom plugins (see their github for instructions)  
-	- fast-syntax-highlighting  
- 	- zsh-autosuggestions  
-* go needed for go envs to be useful  
+* see dotfile for details  
 
 DEFAULT INSTALL LOCATION:  
 /home/trent/.zshrc  
 
 INSTALL:   
+currently not working. macOS thing? instead, copy it over directly instead of symlinking  
 ln -sf /opt/configs/zsh/.zshrc /home/trent/.zshrc  
+
 
