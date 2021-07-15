@@ -1,41 +1,29 @@
 # trent wilson
 # prereqs:
-# install zsh, chsh, oh my zsh, fzf needed for zsh-interactive-cd
-# install custom plugins
-# 	- fast-syntax-highlighting
-# 	- zsh-autosuggestions
-# 	- vi/git addon see below
-# go needed for go envs to be useful
-# pyenv line below requires pyenv
+# install zsh, chsh, fzf is needed for zsh-interactive-cd
+# install plugins via github. see next section below
+# install bash-completion.. maybe? or does bashcompinit take care of it?
+# install completion functions for special progs
+### in bottom section-
+# go needed for go envs to be useful, java, maven, pyenv tweaks too.
 
-# Path to your oh-my-zsh installation.
-export ZSH="/home/trent/.oh-my-zsh"
-
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(	 
-#		vi-mode
-		zsh-interactive-cd
-		fast-syntax-highlighting
-		zsh-autosuggestions
-#		git-prompt
-		gitfast
-	)
-
-# is ohmyzsh pointless if i'm getting most my plugins from gh anyway? refactor
-source $ZSH/oh-my-zsh.sh
-# sets prompt has nice git functionality and vi mode indicator lumped in
-# https://github.com/woefe/git-prompt.zsh 
-# and wget https://raw.githubusercontent.com/woefe/vi-mode.zsh/master/vi-mode.zsh
-# ..beautiful..
+# sets prompt. has nice git functionality and vi mode indicator lumped in
+# git clone https://github.com/woefe/git-prompt.zsh 
+# wget https://raw.githubusercontent.com/woefe/vi-mode.zsh/master/vi-mode.zsh
 source ~/.zsh/git-prompt.zsh/vi-mode.zsh
 source ~/.zsh/git-prompt.zsh/git-prompt.zsh
 source ~/.zsh/git-prompt.zsh/examples/wprompt.zsh
 
-# User configuration
-# some inspo from 
+source ~/.zsh/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
+source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+
+# fpath = user defined function path expanded to include addtl completion funcs 
+# docker: https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/zsh/_docker
+# docker-compose: https://raw.githubusercontent.com/docker/compose/1.29.2/contrib/completion/zsh/_docker-compose
+fpath=(~/.zsh/completion $fpath)
+
+# history file improvements. some inspo from 
 # https://callstack.com/blog/supercharge-your-terminal-with-zsh/
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
@@ -50,57 +38,47 @@ setopt auto_list # automatically list choices on ambiguous completion
 setopt auto_menu # automatically use menu completion
 setopt always_to_end # move cursor to end if word had one match
 
-# prompt. color on, hostname , pwd, color off, if sudo # else $
-# disabled to make way for git prompt
-#PS1='%F{blue}%m %1/%f%(!.#.$) '
-
-# go env variables
-GOPATH=$HOME/go
-GOBIN=$GOPATH/bin
-
-# generic env variables
-PATH=$GOBIN:$HOME/bin:/usr/local/bin:$HOME/.pyenv/bin:$PATH
-EDITOR='nvim'
-
-alias vi="nvim"
-
-# for pyenv aka pick your python version
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-
-# vi-mode settings
-# superseeded by woefe git prompt above
-#VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-#VI_MODE_SET_CURSOR=true
-#MODE_INDICATOR="%F{magenta}[NORMAL]%f"
-
-# zsh-autosuggestions settings
+# zsh-autosuggestions (predictive, past cursor) settings
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=3"
+# autosuggestions history on scroll
+# see https://github.com/zsh-users/zsh-autosuggestions/issues/594 for source of 
+# below solution code
+zle-line-init() {}
+bindkey '\e[A' history-beginning-search-backward
+bindkey '\e[B' history-beginning-search-forward
 
-# arrow scroll through suggestions per
-# https://github.com/zsh-users/zsh-autosuggestions/issues/303
-# it doesn't work exactly like i want. will auto accept and go to eol. (fyi)
-if [[ "${terminfo[kcuu1]}" != "" ]]; then
-autoload -U up-line-or-beginning-search
-zle -N up-line-or-beginning-search
-bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
-fi
-
-if [[ "${terminfo[kcud1]}" != "" ]]; then
-autoload -U down-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
-fi
-
-# autocompletion 
+# tab autocompletion 
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
 zstyle ':completion:*' use-compctl false
 zstyle :compinstall filename '/home/trent/.zshrc'
-autoload -Uz compinit
-compinit
+autoload -Uz +X compinit && compinit
+autoload -Uz +X bashcompinit && bashcompinit
+_comp_options+=(globdots) # Include hidden files.
+
+################ more program specific mods below
 
 # autocompletion for terraform
-autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
+
+# go env variables
+GOPATH=$HOME/go
+GOBIN=$GOPATH/bin
+
+# maven@3.5 is keg-only, which means it was not symlinked into /opt/homebrew,
+# because this is an alternate version of another formula.
+MAVEN_PATH="/opt/homebrew/opt/maven@3.5/bin:$PATH"
+
+# env variables
+PATH=$MAVEN_PATH:$GOBIN:$HOME/bin:/usr/local/bin:$HOME/.pyenv/bin:$PATH
+EDITOR='nvim'
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
+alias vi="nvim"
+alias ls="ls -shal"
+
+# for pyenv aka pick your python version
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
+
