@@ -23,7 +23,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1", "2", "3", "4", "5"};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -39,6 +39,7 @@ static const Rule rules[] = {
 static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -48,12 +49,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod4Mask
-#define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+#define MODKEY Mod1Mask
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -62,64 +58,60 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_violet, "-sf", col_gray4, NULL };
 static const char *clipmenucmd[] = { "clipmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_violet, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "termite", NULL };
+static const char *termcmd[]  = { "urxvt", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	/********************************************************************/
+
 	/* launch dmenu */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	/* launch clipmenu */
-	{ MODKEY|ShiftMask,             XK_space,  spawn,          {.v = clipmenucmd } },
+	{ MODKEY,                       XK_Tab,    spawn,          {.v = clipmenucmd } },
 	/* launch terminal */
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	/* show or hide the top bar */
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+
 	/* focus down */
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	/* focus up */
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_l,      focusstack,     {.i = +1 } },
 	/* move vertical seperator left */
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_j,      setmfact,       {.f = -0.05} },
 	/* move vertical seperator right */
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_k,      setmfact,       {.f = +0.05} },
 	/* increase amount of windows on left side */
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_d,      incnmaster,     {.i = +1 } },
 	/* decrease amount of windows on left side */
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_f,      incnmaster,     {.i = -1 } },
 	/* move window left. if already left, move down?  */
-	{ MODKEY,                       XK_m,      zoom,           {0} },
+	{ MODKEY,                       XK_s,      zoom,           {0} },
 	/* switch to fullscreen  */
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[2]} },
 	/* switch to tile mode  */
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_h,      setlayout,      {.v = &layouts[0]} },
 	/* switch to floating mode  */
-	{ MODKEY,                       XK_x,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_n,      setlayout,      {.v = &layouts[1]} },
+        /* hide topbar */
+        { MODKEY,                       XK_b,      togglebar,      {0} },
 	/* kill targeted window  */
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
 	/* quit dwm  */
 	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
 
-	/* I don't use these ... yet */
-	{ MODKEY,                       XK_z,      setlayout,      {0} }, 
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-      /*{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },*/
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
+        /* view desktop */
+	{ MODKEY,                       XK_p,      view,           {.ui = 1 << 0 } }, 
+	{ MODKEY,                       XK_o,      view,           {.ui = 1 << 1 } }, 
+	{ MODKEY,                       XK_i,      view,           {.ui = 1 << 2 } }, 
+	{ MODKEY,                       XK_u,      view,           {.ui = 1 << 3 } }, 
+	{ MODKEY,                       XK_y,      view,           {.ui = 1 << 4 } }, 
+        /* throw to desktop */
+	{ MODKEY,                       XK_q,      tag,            {.ui = 1 << 0 } }, 
+	{ MODKEY,                       XK_w,      tag,            {.ui = 1 << 1 } }, 
+	{ MODKEY,                       XK_e,      tag,            {.ui = 1 << 2 } }, 
+	{ MODKEY,                       XK_r,      tag,            {.ui = 1 << 3 } }, 
+	{ MODKEY,                       XK_t,      tag,            {.ui = 1 << 4 } }, 
+        /* multi monitor */
+        { MODKEY,                       XK_apostrophe, focusmon,   {.i = +1 } },
+        { MODKEY,                       XK_a, tagmon,              {.i = +1 } },
 
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
 };
 
 /* button definitions */
@@ -138,4 +130,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
