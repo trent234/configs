@@ -5,9 +5,9 @@ config hub useful for getting personalization & workflow asap on new arch instal
 * xorg -> the x11 server configuration needed to start my wm of choice and statusbar and set initial configs.   
 * dwm -> my window manager  
 * goblocks -> my window manager status bar  
-*  grub -> boot manager  
+* grub -> boot manager  
 * zsh -> my shell  
-* termite -> my terminal emulator (planning on changing this back to urxvt eventually)  
+* st -> my terminal emulator (launches a vim terminal emulator)
 * nvim -> my text editor  
 * clipmenu -> configs to converge clipboards throughout the system and make it usable and convenient.  
 * misc_scripts are one-offs that don't deserve a folder, but they are useful shortcuts  
@@ -16,7 +16,6 @@ config hub useful for getting personalization & workflow asap on new arch instal
 * fix clipmenu bugs. needs occasional restarts.  
 * fix udev monitor swap. not done with that.  
 * would be great to fix fonts. all emoji from one, all others from another, and also include patched powerline fonts so all vim-airline characters render. 
-* switch back to urxvt from termite but fix emoji fonts issue and window size gaps. or find a better terminal emulator that has on-demand font size switching and all the creature comforts.   
 
 
 ### screenshot
