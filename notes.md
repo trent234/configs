@@ -30,7 +30,6 @@ the c server is still WIP . npm? rein in all the package managers? no.
 see here for a good place to start to add new lang servers:  
 https://github.com/neoclide/coc.nvim/wiki/Language-servers#bash
 
-need git to use vim fugitive plugin 
 need go for vim-go plugin. note some required go envs set in .zshrc
 delve install steps before plugin install? any? add here.
 
@@ -69,4 +68,16 @@ the file must have the .md file extension
 ### other sources & inspiration
 most everything has probably changed since i read this article.  
 https://tpaschalis.github.io/vim-go-setup/       
+
+### st notes
+looking for a urxvt replacement because its font issues are frustrating
+so i found whats probably the only more frustrating terminal to configure
+lets do it!
+
+
+gdm needs config someplace add notes. although gdm is probs temporary.
+coc.nvim is doing something weird with its config folder. fix that. find
+root cause.
+
+
 

@@ -5,24 +5,22 @@
 
 " plugins
 call plug#begin('~/.vim/plugged')
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-Plug 'sebdah/vim-delve'
-Plug 'benmills/vimux'
-Plug 'preservim/nerdtree'
-Plug 'tpope/vim-fugitive'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" three below are for go programming. can any of it be replaced with coc func?
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'sebdah/vim-delve'
+Plug 'benmills/vimux'
 call plug#end()
 
 """""""""""""""""""""""""" global vim settings """""""""""""""""""""""""""""""
 
-" syntax highlighting. this is auto on with vim-plug
-"syntax on
-
 " row numbers
 set number
+
+set cmdheight=1
 
 " reminder not to go to far down the line. and set nice solar color.
 set colorcolumn=80
@@ -47,27 +45,12 @@ set clipboard=unnamedplus
 " let blacklist = ['md', 'markdown']
 " autocmd BufWritePre * if index(blacklist, &ft) < 0 | %s/\s\+$//e
 
-" change dropdown menu gb color bc default gray was unreadable in remote desktop
-" deprecated... delete?
-" highlight Pmenu ctermbg=green guibg=green
-
-""""""""""""""""""" nerdtree"""""""""""""""""""""""""""""""""""""""""""""""""
-"auto init on start
-"autocmd vimenter * NERDTree
-
-" width set
-let g:NERDTreeWinSize=20
-
-"now switch focus back to the original file and not nerdtree
-"autocmd VimEnter * wincmd p
-
-"autoclose when its the last buffer open (after a close of another buffer)
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"""""""""""""""""""" terminal-mode settings """"""""""""""""""""""""""""""""""
+tnoremap <Del> <C-\><C-n>
+" be sure to add many more configs here. save history to normal loc?
+" and endless possibilities....
 
 """"""""""""""""""" vim-go related settings """"""""""""""""""""""""""""""""""""
-
-" enables use of missing vim-go commands. this is auto on with vim-plug
-" filetype plugin indent on
 
 " write content on :make automatically and save the hassle of saving manually
 set autowrite
@@ -92,15 +75,17 @@ set autowrite
 let g:delve_new_command = "new"
 
 """"""""""""""""""""" vim-solarized-themes """""""""""""""""""""""""""""""""""""
+" to get the solarized theme run :AirlineTheme solarized
 let g:airline_theme='solarized_flood'
 
 """""""""""""""""" coc.nvim settings """""""""""""""""""""""""""""""""
 " just about all copied from github page no doubt
+" check the latest for updates!!!
 
 " if hidden is not set, TextEdit might fail.
 set hidden
 " Better display for messages
-set cmdheight=2
+" set cmdheight=2
 " Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=300
 " don't give |ins-completion-menu| messages.
@@ -110,11 +95,11 @@ set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
+ inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -174,7 +159,7 @@ let g:go_def_mapping_enabled = 0
 
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
-let g:mkdp_auto_start = 0
+let g:mkdp_auto_start = 1
 
 " set to 1, the nvim will auto close current preview window when change
 " from markdown buffer to another buffer

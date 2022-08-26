@@ -26,6 +26,9 @@ COREQUISITE:
 DEFAULT INSTALL LOCATION:  
 /opt/dwm-6.2/config.h   
 
+TODO:
+install patch to have are-you-sure popup on dwm exit.
+
 INSTALL:  
 cd /opt  
 git clone git://git.suckless.org/dwm  

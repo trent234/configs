@@ -5,7 +5,7 @@
 ! 96dpi is 100% so 168 is 175%
 ! Using on 4k 32 inch monitor - 137 ppi
 ! look into clean way of modding this as ppi/display changes
-Xft.dpi: 168
+Xft.dpi: 96 
 
 URxvt.perl-ext-common: default,matcher,clipboard
 
@@ -18,9 +18,9 @@ URxvt*scrollBar: false
 Urxvt*secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
 URxvt*saveLines: 5000
 URxvt*termName: rxvt-unicode
-URxvt.urlLauncher: firefox
-URxvt.matcher.button: 1
-URxvt.font: xft:DejaVu Sans Mono:size=12:antialias=true
+URxvt*urlLauncher: firefox
+URxvt*matcher.button: 1
+URxvt*font: xft:DejaVu Sans Mono:size=12:antialias=true,xft:Noto Color Emoji:size=12:style=Regular,xft:Font Awesome 6 Brands:size=12:style=Regular,xft:Font Awesome 6 Free:size=12:style=Regular
 
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 
