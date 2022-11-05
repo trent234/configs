@@ -20,16 +20,19 @@ DEFAULT INSTALL LOCATION:
 INSTALL:  
 sudo pacman -S neovim  
 ln -sf /opt/configs/init.nvim /home/trent/.config/nvim/init.vim  
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \  
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'  
+:PlugInstall  
 see airline theme for directions to set the solarized theme (thats already  
 configured) just need to run the command one time to set it.  
-nvim:
-  * :CocInstall coc-pyright
+nvim:  
+  * :CocInstall coc-pyright  
 
 TO DO:  
 learn and set up language servers further  
-go is setup, bash too. c langs is tbd & complicated. python tbd.
+go is setup, bash too. c langs is tbd & complicated. python tbd.  
 
-FAVS:
-  * gd = go to docs for that function
-  * gh = go hover for docs for that function
+FAVS:  
+  * gd = go to docs for that function  
+  * gh = go hover for docs for that function  
 

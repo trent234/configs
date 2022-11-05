@@ -1,4 +1,4 @@
-export XDG_CONFIG_HOME=~/repos/configs/st
+export XDG_CONFIG_HOME=/opt/configs/st
 st -e nvim &
 export XDG_CONFIG_HOME=~/.configs
 

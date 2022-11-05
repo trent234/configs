@@ -2,4 +2,4 @@
 #trent wilson
 #wrapper for clipmenu, needed for dwm 
 
-CM_DIR=~/.cache clipmenu $@
+CM_DIR=~/.cache clipmenu "$@"
