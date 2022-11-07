@@ -1,0 +1,3 @@
+#!/bin/sh
+
+st -e nvim -u ~/.config/nvim/term_init.vim

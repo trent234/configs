@@ -5,14 +5,13 @@
 
 " plugins
 call plug#begin('~/.vim/plugged')
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" three below are for go programming. can any of it be replaced with coc func?
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'sebdah/vim-delve'
-Plug 'benmills/vimux'
+" two below are for go programming. can any of it be replaced with coc func?
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'sebdah/vim-delve'
+" Plug 'benmills/vimux'
 call plug#end()
 
 """""""""""""""""""""""""" global vim settings """""""""""""""""""""""""""""""
@@ -53,7 +52,7 @@ tnoremap <Del> <C-\><C-n>
 """"""""""""""""""" vim-go related settings """"""""""""""""""""""""""""""""""""
 
 " write content on :make automatically and save the hassle of saving manually
-set autowrite
+"set autowrite
 
 " avoid learning about location lists and the shortcuts for it (for now)
 " stick with quicklists for everything in vim-go
@@ -72,11 +71,11 @@ set autowrite
 
 """"""""""""""""""""" vim-delve """""""""""""""""""""""""""""""""""""""""""""
 "used to create a new (horiz) window to run the terminal in.
-let g:delve_new_command = "new"
+"let g:delve_new_command = "new"
 
 """"""""""""""""""""" vim-solarized-themes """""""""""""""""""""""""""""""""""""
 " to get the solarized theme run :AirlineTheme solarized
-let g:airline_theme='solarized_flood'
+let g:airline_theme='solarized'
 
 """""""""""""""""" coc.nvim settings """""""""""""""""""""""""""""""""
 " just about all copied from github page no doubt

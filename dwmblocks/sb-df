@@ -1,0 +1,4 @@
+#!/bin/sh
+
+FREE_SPACE=$(df -h --output=avail /dev/mmcblk1p5 | tail -1 | xargs)
+echo df: $FREE_SPACE 

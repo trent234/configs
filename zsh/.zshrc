@@ -11,6 +11,11 @@ source ~/.zsh/git-prompt.zsh/vi-mode.zsh
 source ~/.zsh/git-prompt.zsh/git-prompt.zsh
 source ~/.zsh/git-prompt.zsh/examples/wprompt.zsh
 
+# PLUGIN zsh-system-clipboard
+# https://github.com/kutsan/zsh-system-clipboard 
+source ~/.zsh/zsh-system-clipboard/zsh-system-clipboard.zsh
+ZSH_SYSTEM_CLIPBOARD_METHOD=xsc
+
 # PLUGIN zsh-autosuggestions
 # https://github.com/zsh-users/zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -41,6 +46,7 @@ setopt auto_menu # automatically use menu completion
 setopt always_to_end # move cursor to end if word had one match
 
 # generic env variables
+export PATH=~/.local/bin:~/.local/bin/statusbar:$PATH
 EDITOR='nvim'
 
 alias vi="nvim"
@@ -68,3 +74,4 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:]
 zstyle ':completion:*' use-compctl false
 zstyle :compinstall filename '/home/trent/.zshrc'
 autoload -Uz compinit
+
