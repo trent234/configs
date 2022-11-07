@@ -5,9 +5,19 @@
 
 " plugins
 call plug#begin('~/.vim/plugged')
+" style
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" language server
+Plug 'neovim/nvim-lspconfig'
+
+" for c dev
+Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make'}
+Plug 'ray-x/navigator.lua'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 " two below are for go programming. can any of it be replaced with coc func?
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'sebdah/vim-delve'
@@ -49,6 +59,9 @@ tnoremap <Del> <C-\><C-n>
 " be sure to add many more configs here. save history to normal loc?
 " and endless possibilities....
 
+""""" language server 
+" No need for require('lspconfig'), navigator will configure it for you
+
 """"""""""""""""""" vim-go related settings """"""""""""""""""""""""""""""""""""
 
 " write content on :make automatically and save the hassle of saving manually
@@ -76,6 +89,35 @@ tnoremap <Del> <C-\><C-n>
 """"""""""""""""""""" vim-solarized-themes """""""""""""""""""""""""""""""""""""
 " to get the solarized theme run :AirlineTheme solarized
 let g:airline_theme='solarized'
+
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
 
 """""""""""""""""" coc.nvim settings """""""""""""""""""""""""""""""""
 " just about all copied from github page no doubt
@@ -247,5 +289,8 @@ let g:mkdp_page_title = '「${name}」'
 " these filetypes will have MarkdownPreview... commands
 let g:mkdp_filetypes = ['markdown']
 
-
-
+" lua section!
+lua <<EOF
+require'navigator'.setup()
+require'lspconfig'.clangd.setup{}
+EOF

@@ -22,9 +22,17 @@ COREQUISITE:
 * dwm  
 
 PATCHES:
-st-no_bold_colors-20170623-b331da5.diff  
-st-solarized-dark-0.8.5.diff  
-st-anysize-20220718-baa9357.diff  
+https://st.suckless.org/patches/solarized/st-no_bold_colors-20170623-b331da5.diff
+st-no_bold_colors
+
+https://st.suckless.org/patches/solarized/st-solarized-dark-0.8.5.diff
+st-solarized-dark
+
+https://st.suckless.org/patches/anysize/st-anysize-20220718-baa9357.diff
+st-anysize
+
+https://st.suckless.org/patches/font2/st-font2-0.8.5.diff
+st-font2
 
 DEFAULT INSTALL LOCATION:  
 
