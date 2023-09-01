@@ -14,6 +14,9 @@ vconsole.conf sets a huge font for the virtual console that we see on login.
 its normally way to tiny, so this will fix that.  
 in the future, find or dev a dm that runs as close to this process but with a FE  
 
+Clean up this dir. I added an .xprofile copy for use with ubuntus desktop manager.  
+Consolidate changes  
+
 COREQUISITE:  
 * dwm and dwmstatus are run from .xinitrc. the expectation is that running startx  
   will start a WM/DE and for me its dwm. be sure its installed before running  

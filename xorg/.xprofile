@@ -1,0 +1,28 @@
+#!/bin/sh
+#trent wilson
+#corequisites: dwm, xsstate, slock, and goblocks
+#goblocks requires go to build
+
+export PATH=~/.local/bin:~/.local/bin/statusbar:$PATH
+
+# gtk based prefs
+export GDK_SCALE=2
+export GTK_THEME=Adwaita:dark
+export QT_SCALE_FACTOR=2
+
+# statusbar
+dwmblocks &
+
+
+# this cant be enabled/started the normal way. see docs & the $DISPLAY dependency  
+systemctl --user import-environment DISPLAY 
+systemctl --user start clipmenud
+
+# window manager
+#exec dwm
+
+#/snap/bin/slack &
+#/usr/bin/zoom &
+#/usr/local/bin/vpnui &
+#/usr/bin/parsecd &
+#/usr/bin/google-chrome &

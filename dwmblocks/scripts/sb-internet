@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if grep -xq 'up' /sys/class/net/w*/operstate 2>/dev/null ; then
+	state="$(awk '/^[[:space:]]*w/ { print "wlan ", int($3 * 100 / 70) "% " }' /proc/net/wireless)"
+elif grep -xq 'up' /sys/class/net/enp*/operstate 2>/dev/null ; then
+	state="lan"
+else
+	state="down"
+fi
+echo $state
+

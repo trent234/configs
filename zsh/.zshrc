@@ -27,7 +27,7 @@ source ~/.zsh/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
 
 # PLUGIN fast-syntax-highlighting
 # https://github.com/zdharma/F-Sy-H
-source ~/.zsh/fast-syntax-highlighting/F-Sy-H.plugin.zsh
+source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 # User configuration
 # some inspo from 
@@ -48,8 +48,9 @@ setopt always_to_end # move cursor to end if word had one match
 # generic env variables
 export PATH=~/.local/bin:~/.local/bin/statusbar:$PATH
 EDITOR='nvim'
+TOMCAT_HOME="/home/trent/repos/ao/docker-compose/deploy/legacy/tomcat"
 
-alias vi="nvim"
+alias vi="/opt/trent/nvim-linux64/bin/nvim"
 alias "git-log"="git log --graph --decorate --pretty=oneline --abbrev-commit"
 alias ls="ls -shal"
 
@@ -60,18 +61,26 @@ alias ls="ls -shal"
 # but doesn't move cursor. THEN it already has "forward-word" widget to 
 # partially accept it until i want to diverge...
 
-autoload -Uz up-line-or-beginning-search
-autoload -Uz down-line-or-beginning-search
+# Cycle through history based on characters already typed on the line
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
+bindkey "$key[Up]" up-line-or-beginning-search
+bindkey "$key[Down]" down-line-or-beginning-search
 
 # autocompletion 
-zstyle ':completion:*' completer _expand _complete _ignored _approximate
-zstyle ':completion:*' format 'Completing %d'
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
-zstyle ':completion:*' use-compctl false
-zstyle :compinstall filename '/home/trent/.zshrc'
-autoload -Uz compinit
+#zstyle ':completion:*' completer _expand _complete _ignored _approximate
+#zstyle ':completion:*' format 'Completing %d'
+#zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
+#zstyle ':completion:*' use-compctl false
+#zstyle :compinstall filename '/home/trent/.zshrc'
+#autoload -Uz compinit
 
+export ACTON_SSH_USER=trent.wilson
+export ACTON_SSH_ID_FILE=/home/trent/.ssh/id_rsa
+export ACTON_ANSIBLE_INVENTORY=/home/trent/repos/ao/ansible-inventory
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

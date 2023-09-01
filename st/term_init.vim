@@ -10,9 +10,12 @@ startinsert
 set laststatus=0
 set cmdheight=0
 
-" number on normal mode. this also signifies whether in term or normal mode  
-au TermEnter * set nonumber
-au TermLeave * set number
+" set mouse mode to on
+set mouse=a
+
+" number on normal mode. this signifies whether in term or normal mode  
+au TermEnter * set norelativenumber
+au TermLeave * set relativenumber
 
 " remap term to normal mode switch to del key
 tnoremap <Del> <C-\><C-n>

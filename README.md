@@ -15,3 +15,14 @@ config hub useful for getting personalization & workflow asap on new arch instal
 #### TODO:  
 * fix udev monitor swap. not done with that.  
 * would be great to fix fonts. all emoji from one, all others from another, and also include patched powerline fonts so all vim-airline characters render. 
+
+## font notes
+st will crash without emoji. do this:  
+download font here:  
+https://fonts.google.com/noto/specimen/Noto+Color+Emoji  
+sudo cp /usr/share/fonts/truetype  
+fc-cache -f -v  
+validate with:  
+fc-list | grep Emoji  
+more on this in the st readme but watch out for the font2 patch. 
+Read the diff and see the array. dl powerline etc and add like above.  

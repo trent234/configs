@@ -44,3 +44,6 @@ sudo make clean install
 ln -sf /opt/configs/st/st_run /usr/local/bin/st_run  
 ln -sf /opt/configs/st/term_init.vim ~/.config/nvim/term_init.vim  
 (no config.h for st. its standard. minus patches.)
+
+for patches, dl them into repo root then  
+patch -i 1.diff  
