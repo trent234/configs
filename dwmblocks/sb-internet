@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Show wifi 📶 and percent strength 
+# Show 🌐 if connected to ethernet 
+# Show city of public IP
+
+case $BLOCK_BUTTON in
+	1) "$TERMINAL" -e nmtui; pkill -RTMIN+4 dwmblocks ;;
+	3) notify-send "🌐 Internet module" "\- Click to connect
+
+📶: wifi connection with quality
+🌐: ethernet working
+" ;;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+if grep -xq 'up' /sys/class/net/w*/operstate 2>/dev/null ; then
+	wifiicon="$(awk '/^\s*w/ { print "📶", int($3 * 100 / 70) "% " }' /proc/net/wireless)"
+fi
+
+printf "%s%s%s\n" "$wifiicon" "$(sed "s/up/🌐/" /sys/class/net/e*/operstate 2>/dev/null)" "$(curl -s https://am.i.mullvad.net/json | jq '.city' | sed s/\"//g)"
