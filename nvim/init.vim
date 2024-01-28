@@ -18,6 +18,8 @@ Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make'}
 Plug 'ray-x/navigator.lua'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+Plug 'github/copilot.vim'
+
 " two below are for go programming. can any of it be replaced with coc func?
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'sebdah/vim-delve'
