@@ -6,13 +6,14 @@
 export PATH=~/.local/bin:~/.local/bin/statusbar:$PATH
 
 # gtk based prefs
-export GDK_SCALE=2
+#export GDK_SCALE=2
 export GTK_THEME=Adwaita:dark
-export QT_SCALE_FACTOR=2
+#export QT_SCALE_FACTOR=2
 
 # statusbar
 dwmblocks &
 
+feh --bg-scale ~/Documents/tiger-wallpaper.png 
 
 # this cant be enabled/started the normal way. see docs & the $DISPLAY dependency  
 systemctl --user import-environment DISPLAY 

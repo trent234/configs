@@ -14,8 +14,8 @@ set cmdheight=0
 set mouse=a
 
 " number on normal mode. this signifies whether in term or normal mode  
-au TermEnter * set norelativenumber
-au TermLeave * set relativenumber
+au TermEnter * set nonumber
+au TermLeave * set number
 
 " remap term to normal mode switch to del key
 tnoremap <Del> <C-\><C-n>

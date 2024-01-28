@@ -8,14 +8,19 @@ static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "DejaVu Sans Mono:size=24",
-					"Noto Emoji,Noto Emoji Medium:size=22" };
-static const char dmenufont[]       = "DejaVu Sans Mono:size=24";
-static const char col_gray1[]       = "#002b36";
-static const char col_gray2[]       = "#073642";
-static const char col_gray3[]       = "#586e75";
-static const char col_gray4[]       = "#eee8d5";
-static const char col_violet[]      = "#6c71c4";
+static const char *fonts[]          = { "DejaVu Sans Mono:size=22",
+					"Noto Emoji,Noto Emoji Medium:size=20" };
+static const char dmenufont[]       = "DejaVu Sans Mono:size=22";
+/* main dark bg? */
+static const char col_gray1[]       = "#282828";
+/* main slightly lighter bg? */
+static const char col_gray2[]       = "#2d2d2d";
+
+static const char col_gray3[]       = "#77767b";
+
+static const char col_gray4[]       = "#c0bfbc";
+
+static const char col_violet[]      = "#15539e";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -50,7 +55,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -73,7 +78,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 
 	/* focus down */
-	{ MODKEY,                       XK_l,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_apostrophe,      focusstack,     {.i = +1 } },
 	/* move vertical seperator left */
 	{ MODKEY,                       XK_j,      setmfact,       {.f = -0.05} },
 	/* move vertical seperator right */
@@ -83,7 +88,7 @@ static Key keys[] = {
 	/* decrease amount of windows on left side */
 	{ MODKEY,                       XK_f,      incnmaster,     {.i = -1 } },
 	/* move window left. if already left, move down?  */
-	{ MODKEY,                       XK_s,      zoom,           {0} },
+	{ MODKEY,                       XK_a,      zoom,           {0} },
 	/* switch to fullscreen  */
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[2]} },
 	/* switch to tile mode  */
@@ -110,8 +115,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_r,      tag,            {.ui = 1 << 3 } }, 
 	{ MODKEY,                       XK_t,      tag,            {.ui = 1 << 4 } }, 
         /* multi monitor */
-        { MODKEY,                       XK_apostrophe, focusmon,   {.i = +1 } },
-        { MODKEY,                       XK_a, tagmon,              {.i = +1 } },
+        { MODKEY,                       XK_l, focusmon,   	   {.i = +1 } },
+        { MODKEY,                       XK_s, tagmon,              {.i = +1 } },
 
 };
 
